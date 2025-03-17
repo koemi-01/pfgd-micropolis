@@ -382,7 +382,7 @@ public class TileConstants
 	{
 		assert (tile & LOMASK) == tile;
 
-		return tile >= FIRSTRIVEDGE && tile <= WOODS5;
+		return (tile == RIVER)||(tile >= FIRSTRIVEDGE && tile <= LASTRIVEDGE);
 	}
 
 	public static boolean isDozeable(int tile)
