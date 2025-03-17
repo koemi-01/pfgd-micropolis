@@ -360,6 +360,65 @@ class RoadLikeTool extends ToolStroke
 		switch (tile)
 		{
 		case RIVER:		// wire on water
+			cost = UNDERWATER_WIRE_COST;
+			{
+				int tmp = eff.getTile(1, 0);
+				char tmpn = neutralizeRoad(tmp);
+
+				if (isConductive(tmp) &&
+					tmpn != HROADPOWER &&
+					tmpn != RAILHPOWERV &&
+					tmpn != HPOWER)
+				{
+					eff.setTile(0, 0, VPOWER);
+					break;
+				}
+			}
+
+			// check west
+			{
+				int tmp = eff.getTile(-1, 0);
+				char tmpn = neutralizeRoad(tmp);
+
+				if (isConductive(tmp) &&
+					tmpn != HROADPOWER &&
+					tmpn != RAILHPOWERV &&
+					tmpn != HPOWER)
+				{
+					eff.setTile(0, 0, VPOWER);
+					break;
+				}
+			}
+
+			// check south
+			{
+				int tmp = eff.getTile(0, 1);
+				char tmpn = neutralizeRoad(tmp);
+
+				if (isConductive(tmp) &&
+					tmpn != VROADPOWER &&
+					tmpn != RAILVPOWERH &&
+					tmpn != VPOWER)
+				{
+					eff.setTile(0, 0, HPOWER);
+					break;
+				}
+			}
+
+			// check north
+			{
+				int tmp = eff.getTile(0, -1);
+				char tmpn = neutralizeRoad(tmp);
+
+				if (isConductive(tmp) &&
+					tmpn != VROADPOWER &&
+					tmpn != RAILVPOWERH &&
+					tmpn != VPOWER)
+				{
+					eff.setTile(0, 0, HPOWER);
+					break;
+				}
+			}
 		case REDGE:
 		case CHANNEL:
 
