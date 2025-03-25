@@ -1009,3 +1009,25 @@
 957   misc_animation@0,2080
 958   misc_animation@0,2096
 959   misc_animation@0,2112
+
+# BEGIN BANK #
+960   bank_zone@0,0             (conducts)(bulldozable)(noburn)
+961   bank_zone@16,0            (conducts)(bulldozable)(noburn)
+962   bank_zone@32,0            (conducts)(bulldozable)(noburn)
+963   bank_zone@0,16            (conducts)(bulldozable)(noburn)
+964   bank_zone@16,16     (zone)(conducts)(bulldozable)(noburn)(building=3x3)(behavior=BANK)(description=#28)
+965   bank_zone@32,16           (conducts)(bulldozable)(noburn)
+966   bank_zone@0,32            (conducts)(bulldozable)(noburn)
+967   bank_zone@16,32           (conducts)(bulldozable)(noburn)
+968   bank_zone@32,32           (conducts)(bulldozable)(noburn)
+
+# BEGIN BANK ICON #
+969   bank_icon@0,0             (conducts)(bulldozable)(noburn)
+970   bank_icon@16,0            (conducts)(bulldozable)(noburn)
+971   bank_icon@32,0            (conducts)(bulldozable)(noburn)
+972   bank_icon@0,16            (conducts)(bulldozable)(noburn)
+973   bank_icon@16,16     (zone)(conducts)(bulldozable)(noburn)(building=3x3)(behavior=BANK)(description=#28)
+974   bank_icon@32,16           (conducts)(bulldozable)(noburn)
+975   bank_icon@0,32            (conducts)(bulldozable)(noburn)
+976   bank_icon@16,32           (conducts)(bulldozable)(noburn)
+977   bank_icon@32,32           (conducts)(bulldozable)(noburn)
