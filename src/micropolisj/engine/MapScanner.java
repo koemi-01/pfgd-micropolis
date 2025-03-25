@@ -98,7 +98,10 @@ class MapScanner extends TileBehavior
 	{
 		// todo: implement bank code
 		boolean powerOn = checkZonePower();
-		city.bankCount++;
+		if (powerOn)
+		{
+			city.bankCount++;
+		}
 
 		if ((city.cityTime % 8) == 0) {
 			repairZone(BANK, 3);
