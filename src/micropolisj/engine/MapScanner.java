@@ -41,7 +41,8 @@ class MapScanner extends TileBehavior
 		STADIUM_EMPTY,
 		STADIUM_FULL,
 		AIRPORT,
-		SEAPORT;
+		SEAPORT,
+		BANK;
 	}
 
 	@Override
@@ -84,9 +85,27 @@ class MapScanner extends TileBehavior
 		case SEAPORT:
 			doSeaport();
 			return;
+		case BANK:
+			doBank();
+			return;
 		default:
 			assert false;
 		}
+	}
+
+	
+	void doBank()
+	{
+		// todo: implement bank code
+		boolean powerOn = checkZonePower();
+		city.bankCount++;
+
+		if ((city.cityTime % 8) == 0) {
+			repairZone(BANK, 3);
+		}
+		
+
+		return;
 	}
 
 	boolean checkZonePower()
