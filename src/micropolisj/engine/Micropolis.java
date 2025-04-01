@@ -125,6 +125,7 @@ public class Micropolis
 	int nuclearCount;
 	int seaportCount;
 	int airportCount;
+	int bankCount;
 
 	int totalPop;
 	int lastCityPop;
@@ -198,6 +199,7 @@ public class Micropolis
 	static final int VALVERATE = 2;
 	public static final int CENSUSRATE = 4;
 	static final int TAXFREQ = 48;
+	static final int INTERESTFREQ = 4;
 
 	public void spend(int amount)
 	{
@@ -538,6 +540,7 @@ public class Micropolis
 		nuclearCount = 0;
 		seaportCount = 0;
 		airportCount = 0;
+		bankCount = 1;
 		powerPlants.clear();
 
 		for (int y = 0; y < fireStMap.length; y++) {
@@ -611,6 +614,19 @@ public class Micropolis
 			if (cityTime % TAXFREQ == 0) {
 				collectTax();
 				evaluation.cityEvaluation();
+			}
+
+			if (cityTime % INTERESTFREQ == 0) {
+				// use bank interest rate model interest=P*r
+				// P = price of bank
+				// r = interest rate
+				double amount = 10000*0.005*bankCount;
+				int amount_int = (int)amount;
+				spend(-amount_int);
+				FinancialHistory f = financialHistory.get(0);
+				f.bankIncome += amount_int;
+
+				System.out.println("collected bank interest");
 			}
 			break;
 
@@ -1467,6 +1483,7 @@ public class Micropolis
 		bb.put("STADIUM_FULL", new MapScanner(this, MapScanner.B.STADIUM_FULL));
 		bb.put("AIRPORT", new MapScanner(this, MapScanner.B.AIRPORT));
 		bb.put("SEAPORT", new MapScanner(this, MapScanner.B.SEAPORT));
+		bb.put("BANK", new MapScanner(this, MapScanner.B.BANK));
 
 		this.tileBehaviors = bb;
 	}
@@ -1756,6 +1773,7 @@ public class Micropolis
 		public int totalFunds;
 		public int taxIncome;
 		public int operatingExpenses;
+		public int bankIncome;
 	}
 	public ArrayList<FinancialHistory> financialHistory = new ArrayList<FinancialHistory>();
 
@@ -1779,6 +1797,8 @@ public class Micropolis
 		budget.roadFundEscrow = 0;
 		budget.fireFundEscrow = 0;
 		budget.policeFundEscrow = 0;
+
+		System.out.println("collected tax");
 	}
 
 	/** Annual maintenance cost of each police station. */
