@@ -305,6 +305,7 @@ budgetdlg.operating_expenses = Charges d'exploitation
 budgetdlg.cash_end = Argent, à la fin de l'année
 budgetdlg.auto_budget = Budget automatique
 budgetdlg.pause_game = Jeu en pause
+budgetdlg.bank_income=Revenu bancaire
 
 !
 ! Notification pane

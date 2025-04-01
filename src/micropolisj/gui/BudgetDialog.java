@@ -343,6 +343,8 @@ public class BudgetDialog extends JDialog
 		c0.gridy++;
 		balancePane.add(new JLabel(strings.getString("budgetdlg.operating_expenses")), c0);
 		c0.gridy++;
+		balancePane.add(new JLabel(strings.getString("budgetdlg.bank_income")), c0);
+		c0.gridy++;
 		balancePane.add(new JLabel(strings.getString("budgetdlg.cash_end")), c0);
 
 		c1.anchor = GridBagConstraints.EAST;
@@ -358,7 +360,7 @@ public class BudgetDialog extends JDialog
 			Micropolis.FinancialHistory f = engine.financialHistory.get(i);
 			Micropolis.FinancialHistory fPrior = engine.financialHistory.get(i+1);
 			int cashFlow = f.totalFunds - fPrior.totalFunds;
-			int capExpenses = -(cashFlow - f.taxIncome + f.operatingExpenses);
+			int capExpenses = -(cashFlow - f.taxIncome + f.operatingExpenses - f.bankIncome);
 
 			c1.gridx++;
 			c1.gridy = 0;
@@ -387,6 +389,12 @@ public class BudgetDialog extends JDialog
 			JLabel opExpensesLbl = new JLabel();
 			opExpensesLbl.setText(formatFunds(f.operatingExpenses));
 			balancePane.add(opExpensesLbl, c1);
+
+			// bank income
+			c1.gridy++;
+			JLabel bankIncomeLbl = new JLabel();
+			bankIncomeLbl.setText(formatFunds(f.bankIncome));
+			balancePane.add(bankIncomeLbl, c1);
 
 			c1.gridy++;
 			JLabel newBalanceLbl = new JLabel();
